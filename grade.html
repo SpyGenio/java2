@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+ <h2>Semester Final Grades</h2>
+ <p id="finalGrades"></p>
+ <script>
+var person =[{firstName:"Pedro", lastName:"Torres", grade1:90, grade2:89, grade3:93 },
+                {firstName:"John ", lastName:"Perez", grade1:98, grade2:56, grade3:78 },
+                {firstName:"Jose ", lastName:"Cruz",grade1:23, grade2:98, grade3:87 }];
+var text="";
+function promedium(n1,n2,n3){ 
+var x = (n1+n2+n3)/3.0 ;
+return x.toPrecision(3); }
+function final(promedium){
+ var nota;
+  if (promedium >=90 && promedium<=100)
+     nota ="A";
+  else if (promedium>= 80 && promedium<90)
+    nota = "B";
+  else if (promedium>=70 && promedium<80)
+    nota = "C"; 
+ else if (promedium>= 60 && promedium<70)
+    nota = "D";
+ else if (promedium>= 0 && promedium<60)
+    nota = "F";
+ else 
+    nota ="out of range";
+return nota; }
+text = "<table border=3 style=width:75%><tr><th>Name</th><th>Last name</th> <right>"; 
+text += "<th>Grade 1</th><th>Grade 2</th><th>Grade 3</th><th>Average</th><th>Final</th></tr>";
+  
+for(i=0;i<=2;i++)
+{
+  promedio =promedium(Number(person[i].grade1),Number(person[i].grade2), Number(person[i].grade3));
+  finalGrade= final(Number(promedio));
+  text += "<tr><td>"+person[i].firstName + "</td><td> "+ person[i].lastName + "</td><td>";
+  text += person[i].grade1 + "</td><td>  "+ person[i].grade2 + "</td><td>"+ person[i].grade3 + "</td><td>";
+  text += promedio+"</td><td>" +finalGrade+"</td></tr>";
+ }
+text +="</table>";
+document.getElementById("finalGrades").innerHTML = text;
+ </script>
+ </body>
+</html>
